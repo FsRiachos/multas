@@ -7,5 +7,11 @@ namespace multas.Models
 {
     public class Viaturas
     {
+        //id, matricula, 
+
+        public int Id { get; set; }
+
+        public string Matricula { get; set; }
+
     }
 }
