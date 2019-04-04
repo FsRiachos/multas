@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
@@ -8,19 +9,22 @@ namespace multas.Models
 {
     public class MultasDB : DbContext
     {
-        //liga a gestão de base de dados ao meu código
-        public MultasDB():base("MultasConnectionString") { }
+        public MultasDB() : base("MultasDBConnectionString") { }
 
-        //especificar as tabelas da BD
-        public DbSet<Agentes> Agentes { get; set; }
+        // vamos colocar, aqui, as instruções relativas às tabelas do 'negócio'
+        // descrever os nomes das tabelas na Base de Dados
+        public virtual DbSet<Multas> Multas { get; set; } // tabela Multas
+        public virtual DbSet<Condutores> Condutores { get; set; } // tabela Condutores
+        public virtual DbSet<Agentes> Agentes { get; set; } // tabela Agentes
+        public virtual DbSet<Viaturas> Viaturas { get; set; } // tabela Viaturas
 
-        public DbSet<Viaturas> Carros { get; set; }
 
-        public DbSet<Condutores> Condutores { get; set; }
-
-        public DbSet<Multas> Multas { get; set; }
-
-        //package manager console "Enable-Migrations -EnableAutomaticMigrations"
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            base.OnModelCreating(modelBuilder);
+        }
 
     }
 }
