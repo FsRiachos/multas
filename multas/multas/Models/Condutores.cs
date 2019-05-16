@@ -7,6 +7,10 @@ namespace multas.Models
 {
     public class Condutores
     {
+        public Condutores()
+        {
+            ListasDasMultas = new HashSet<Multas>();
+        }
         public int ID { get; set; }
 
         public string Nome { get; set; }
@@ -24,6 +28,6 @@ namespace multas.Models
         public DateTime DataValidadeCarta { get; set; }
 
         //Lista das multas associadas ao condutor
-        public ICollection<Multas> ListasDasMultas { get; set; }
+        public virtual ICollection<Multas> ListasDasMultas { get; set; }
     }
 }

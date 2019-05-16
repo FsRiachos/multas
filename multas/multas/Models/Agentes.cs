@@ -8,6 +8,10 @@ namespace multas.Models
 {
     public class Agentes
     {
+        public Agentes()
+        {
+            ListaDasMultas = new HashSet<Multas>();
+        }
         //id, nome, esquadra, foto
         public int ID { get; set; }
 
@@ -24,6 +28,7 @@ namespace multas.Models
 
         //Objeto "lista" das multas (ICollection == Array)
         //Identifica as multas passadas pelos agentes
-        public ICollection<Multas> ListaDasMultas { get; set; }
+        //virtual - carrrega as multas quando criar um agente
+        public virtual ICollection<Multas> ListaDasMultas { get; set; }
     }
 }
