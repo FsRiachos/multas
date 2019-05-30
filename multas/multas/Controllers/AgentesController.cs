@@ -14,7 +14,7 @@ namespace multas.Controllers
     public class AgentesController : Controller
     {
         //cria uma variavel que representa a base de dados
-        private MultasDB db = new MultasDB();
+        private ApplicationDbContext db = new ApplicationDbContext();
         private object fotografia;
 
         // GET: Agentes
