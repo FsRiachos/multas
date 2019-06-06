@@ -16,7 +16,7 @@ namespace multas.Models
         public int ID { get; set; }
 
         [Required(ErrorMessage ="Por favor, escreva o nome do agente")]
-        [RegularExpression("[A-ZÁÉÍÓÚa-záéíóúàèìòùäëïöüãõâêîôûçñ]+( |-|')?)+", ErrorMessage = "Só pode escrever letras no nome. Deve começar por uma maiúscula")]
+     //   [RegularExpression("[A-ZÁÉÍÓÚa-záéíóúàèìòùäëïöüãõâêîôûçñ]+( |-|')?)+", ErrorMessage = "Só pode escrever letras no nome. Deve começar por uma maiúscula")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Por favor, escreva o nome da esquadra")]
