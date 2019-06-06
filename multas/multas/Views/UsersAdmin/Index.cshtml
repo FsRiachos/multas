@@ -4,11 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Listagem de agentes</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("RecursosHumanos"))
+{
+    <p>
+        @Html.ActionLink("Criar novo Agente", "Create")
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -26,9 +30,17 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Detalhes", "Details", new { id = item.Id })
+                @if (User.IsInRole("RecursosHumanos"))
+                {
+                    <text>
+                        |
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                        |
+                        @Html.ActionLink("Apagar", "Delete", new { id = item.Id })
+                    </text>
+                }  
+
             </td>
         </tr>
     }

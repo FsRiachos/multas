@@ -25,10 +25,16 @@ namespace multas.Models
         public string Esquadra { get; set; }
 
         public string Fotografia { get; set; }
-
+       
         //Objeto "lista" das multas (ICollection == Array)
         //Identifica as multas passadas pelos agentes
         //virtual - carrrega as multas quando criar um agente
         public virtual ICollection<Multas> ListaDasMultas { get; set; }
+
+        //**************************************************************\\
+        //adicionar uma 'chave forasteria' para uma tabela de autenticação
+        //é nencessário para todos as aplicações 'a sério'
+        //[Required]
+        public string UserNameId { get; set; }
     }
 }
